@@ -1,5 +1,7 @@
 # SQL Reporting Dashboard
 
+> **Status:** Public build started on 2026-03-01. This repo is being developed in public from MVP onward.
+
 This project is a small reporting dashboard built on top of a relational database. The point is to turn raw tables into decision-friendly metrics: KPIs, trends, filters, and exports. It’s meant to be fast to run locally and easy to extend with new queries.
 
 The UI will be intentionally simple. The value is in the data model and the SQL.
@@ -34,7 +36,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 3) Seed the database (example)
-psql postgresql://postgres:postgres@localhost:5432/reporting -f seed/seed.sql
+psql postgresql://postgres:postgres@localhost:5434/reporting -f seed/seed.sql
 
 4) Run the dashboard
 streamlit run app.py
@@ -43,7 +45,7 @@ streamlit run app.py
 The app will read a DATABASE_URL.
 
 Example:
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/reporting
+DATABASE_URL=postgresql://postgres:postgres@localhost:5434/reporting
 
 You can set it in your shell or use a .env file depending on your setup.
 

@@ -1,0 +1,6 @@
+### Placeholder – no REST API yet
+### This file is here for the REST Client extension.
+### Add requests here once an API layer is introduced.
+
+# Example (not active):
+# GET http://localhost:8501/healthz HTTP/1.1

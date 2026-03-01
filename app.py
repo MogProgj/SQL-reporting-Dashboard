@@ -22,26 +22,29 @@ def run_query(sql: str) -> pd.DataFrame:
     with psycopg2.connect(DATABASE_URL) as conn:
         return pd.read_sql_query(sql, conn)
 
-st.subheader("KPIs")
+try:
+    st.subheader("KPIs")
 
-kpi_sql = """
-SELECT
-  COUNT(*) AS total_orders,
-  COALESCE(SUM(total_cents), 0) AS total_revenue_cents
-FROM orders;
-"""
+    kpi_sql = """
+    SELECT
+      COUNT(*) AS total_orders,
+      COALESCE(SUM(total_cents), 0) AS total_revenue_cents
+    FROM orders;
+    """
 
-df = run_query(kpi_sql)
+    df = run_query(kpi_sql)
 
-col1, col2 = st.columns(2)
-col1.metric("Total orders", int(df.iloc[0]["total_orders"]))
-col2.metric("Revenue", f"${df.iloc[0]['total_revenue_cents'] / 100:,.2f}")
+    col1, col2 = st.columns(2)
+    col1.metric("Total orders", int(df.iloc[0]["total_orders"]))
+    col2.metric("Revenue", f"${df.iloc[0]['total_revenue_cents'] / 100:,.2f}")
 
-st.subheader("Recent orders")
-orders_sql = """
-SELECT id, customer_name, total_cents, created_at
-FROM orders
-ORDER BY created_at DESC
-LIMIT 20;
-"""
-st.dataframe(run_query(orders_sql), use_container_width=True)
+    st.subheader("Recent orders")
+    orders_sql = """
+    SELECT id, customer_name, total_cents, created_at
+    FROM orders
+    ORDER BY created_at DESC
+    LIMIT 20;
+    """
+    st.dataframe(run_query(orders_sql), use_container_width=True)
+except Exception as exc:
+    st.error(f"Could not reach the database. Is Postgres running?\n\n{exc}")
