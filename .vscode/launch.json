@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Streamlit is normally run via the "App: Run" task.
+      // This config is here for quick debugging of app.py as a plain script.
+      "name": "Python: app.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/app.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

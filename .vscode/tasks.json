@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DB: Up",
+      "type": "shell",
+      "command": "docker compose up -d"
+    },
+    {
+      "label": "DB: Down",
+      "type": "shell",
+      "command": "docker compose down"
+    },
+    {
+      "label": "App: Run",
+      "type": "shell",
+      "command": "streamlit run app.py"
+    },
+    {
+      "label": "Python: Install",
+      "type": "shell",
+      "command": "python -m pip install -r requirements.txt"
+    }
+  ]
+}
