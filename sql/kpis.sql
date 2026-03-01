@@ -1,0 +1,5 @@
+-- Add KPIs here over time.
+-- Example ideas:
+-- revenue last 7 days
+-- top customers by revenue
+-- order volume by day
